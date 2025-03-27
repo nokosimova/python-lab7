@@ -5,10 +5,13 @@ def get_all_words(db_session: Session):
 
     return db_session.query(entities.Word).all()
 
+def get_word_by_id(db_session: Session, id: int):
+
+    return db_session.query(entities.Word).filter(entities.Word.id == id).first()
+
 def get_word_by_name(db_session: Session, name: str):
 
-    return db_session.query(entities.Word)
-                     .filter(entities.Word.name == name).first()
+    return db_session.query(entities.Word).filter(entities.Word.name == name).first()
 
 def add_word(db_session: Session, r: models.CreateRequest):
 
